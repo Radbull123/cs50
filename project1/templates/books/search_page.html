@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+<h2 class="text-center">Searching page</h2>
+    <div class="content-section">
+        <form method="POST">
+            <div>
+                <label for="search">Search</label>
+                <input name="searching_value" class="form-control" id="search" required>
+            </div>
+        </form>
+        {% if matched_books is not none %}
+                <small>Matched books with requested value "{{searching_value}}" </small>
+                <table class="table table-bordered">
+                    <thead style="background-color:#3D9970;">
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Year</th>
+                    </thead>
+                    {% for book in matched_books %}
+                        <tr>
+                            <td>{{ book.isbn }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.year }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+        {% endif %}
+
+    </div>
+{% endblock content %}

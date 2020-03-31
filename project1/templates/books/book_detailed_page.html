@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+<h2>Detailed page of "{{book.title}}"</h2>
+    <div class="row">
+        <div class=".col-md-4">
+            <p>ISBN</p>
+        </div>
+        <div class=".col-md-8">
+            <p>{{book.isbn}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class=".col-md-4">
+            <p>Title</p>
+        </div>
+        <div class=".col-md-8">
+            <p>{{book.title}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class=".col-md-4">
+            <p>Author</p>
+        </div>
+        <div class=".col-md-8">
+            <p>{{book.author}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class=".col-md-4">
+            <p>Year</p>
+        </div>
+        <div class=".col-md-8">
+            <p>{{book.year}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class=".col-md-4">
+            <p>GoodReads score</p>
+        </div>
+        <div class=".col-md-8">
+            <p>{{good_reads_score}}</p>
+        </div>
+    </div>
+    {% if reviews is not None %}
+        <table class="table table-bordered">
+            <thead style="background-color:#3D9970;">
+            <th scope="col">User</th>
+            <th scope="col">Review</th>
+            <th scope="col">Score</th>
+            </thead>
+            {% for review in reviews %}
+                <tr>
+                    <td>{{ review.user}}</td>
+                    <td>{{ review.review }}</td>
+                    <td>{{ review.score }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% if {{ db.query(Reviews).filter(Reviews.user_id==session.get('user_id'))) }}.first() is not none %}
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Leave your review</span>
+          </div>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+    {% endif %}
+{% endblock content %}

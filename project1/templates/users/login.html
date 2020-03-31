@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock title %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            <div>
+                <label for="username">Username</label>
+                <input name="username" id="username" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login now</legend>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-success" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Sign up now! <a class="ml-2" href="{{ url_for('register') }}"> Sign up </a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

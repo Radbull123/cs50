@@ -1,0 +1,6 @@
+Flask
+Flask-Session
+psycopg2-binary
+SQLAlchemy
+cachelib
+Flask-Cache 0.13.1

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section">
+        <h1>Are you sure you want to logout {{session['username']}}?</h1>
+        <form method="post" action="{{ url_for('logout') }}" style='text-align: center;'>
+            <button name="yes" type="submit" class="btn btn-danger">YES!</button>
+            <button name="no" type="submit" class="btn btn-secondary">NO!</button>
+        </form>
+    </div>
+{% endblock content %}
